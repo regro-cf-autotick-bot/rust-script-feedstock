@@ -23,7 +23,8 @@ requirements:
 
 test:
   commands:
-    - rust-script --version | grep -qF '{{ version }}'
+    - rust-script --version | grep -qF '{{ version }}'  # [not win]
+    - rust-script --version                             # [win]
 
 about:
   home: https://rust-script.org
