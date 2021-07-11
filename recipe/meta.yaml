@@ -1,5 +1,5 @@
-{% set version = "0.14.0" %}
-{% set sha256 = "a368e0d529ddcb7f7cfa561df942497c568760d195847d2ea9b08cf169cb501c" %}
+{% set version = "0.15.0" %}
+{% set sha256 = "959e34ddb5f3a90860c186a3dbb0538a23877a47723d2bba0b2e147689ee591e" %}
 
 package:
   name: rust-script
@@ -12,8 +12,8 @@ source:
 build:
   number: 0
   script:
-    - 'cargo install --no-track --locked --verbose --root "${PREFIX}" --path .'  # [not win]
-    - 'cargo install --no-track --locked --verbose --root "%PREFIX%" --path .'   # [win]
+    - cargo install --no-track --locked --verbose --root "${PREFIX}" --path .    # [not win]
+    - cargo install --no-track --locked --verbose --root "%PREFIX%" --path .     # [win]
 
 requirements:
   build:
@@ -166,7 +166,7 @@ about:
     - library_licenses/winapi-x86_64-pc-windows-gnu-LICENSE-APACHE
     - library_licenses/winapi-x86_64-pc-windows-gnu-LICENSE-MIT
     - library_licenses/winreg-LICENSE-MIT
-  summary: 'Run Rust files and expressions without any setup or compilation necessary.'
+  summary: Run Rust files and expressions without any setup or compilation necessary.
   description: |
     With rust-script Rust files and expressions can be executed just like a shell or Python script. Features include:
     - Caching compiled artifacts for speed.
