@@ -10,7 +10,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 0
+  number: 1
   script:
     - cargo install --no-track --locked --verbose --root "${PREFIX}" --path .    # [not win]
     - cargo install --no-track --locked --verbose --root "%PREFIX%" --path .     # [win]
@@ -20,6 +20,7 @@ requirements:
     - {{ compiler('rust') }}
   host:
   run:
+    - rust >=1.47
 
 test:
   commands:
