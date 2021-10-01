@@ -26,10 +26,10 @@ requirements:
 
 test:
   commands:
-    - rust-script --version | grep -qF '{{ version }}'   # [not win]
-    - rust-script --expr 'println!("Hello, World!");'    # [not win]
-    - rust-script --version                              # [win]
-    - rust-script --expr "println!(""Hello, World!"");"  # [win]
+    - rust-script --version | grep -qF '{{ version }}'    # [not win]
+    - rust-script --version | findstr "/C:{{ version }}"  # [win]
+    - rust-script --expr 'println!("Hello, World!");' | grep -qF 'Hello, World!'        # [not win]
+    - rust-script --expr """println!("Hello, World!");""" | findstr "/C:Hello, World!"  # [win]
 
 about:
   home: https://rust-script.org
