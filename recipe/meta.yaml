@@ -10,7 +10,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 0
+  number: 1
   script:
     - cargo install --no-track --locked --verbose --root "${PREFIX}" --path .    # [not win]
     - cargo install --no-track --locked --verbose --root "%PREFIX%" --path .     # [win]
@@ -18,13 +18,18 @@ build:
 requirements:
   build:
     - {{ compiler('rust') }}
+    # rust-script links to C runtime libs => use compiler('c') to get them into run deps
+    - {{ compiler('c') }}
   host:
   run:
+    - rust >=1.47
 
 test:
   commands:
-    - rust-script --version | grep -qF '{{ version }}'  # [not win]
-    - rust-script --version                             # [win]
+    - rust-script --version | grep -qF '{{ version }}'    # [not win]
+    - rust-script --version | findstr "/C:{{ version }}"  # [win]
+    - rust-script --expr 'println!("Hello, World!");' | grep -qF 'Hello, World!'           # [not win]
+    - rust-script --expr "println!("""Hello, World!""");" | findstr /B "/C:Hello, World!"  # [win]
 
 about:
   home: https://rust-script.org
