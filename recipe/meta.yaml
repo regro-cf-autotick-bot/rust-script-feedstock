@@ -1,16 +1,16 @@
-{% set version = "0.17.0" %}
-{% set sha256 = "3f6606ff2152a760566c60117e3587ced4e16da37ecc111938177c9bdf32ee32" %}
+{% set version = "0.22.0" %}
+{% set sha256 = "c4adcac602b38abb0885c5f76013dba942c3aabdecc8250dfc340f58b70bd7f7" %}
 
 package:
   name: rust-script
   version: {{ version }}
 
 source:
-  url: https://github.com/fornwall/rust-script/archive/refs/tags/v{{ version }}.tar.gz
+  url: https://github.com/fornwall/rust-script/archive/refs/tags/{{ version }}.tar.gz
   sha256: {{ sha256 }}
 
 build:
-  number: 1
+  number: 0
   script:
     - cargo install --no-track --locked --verbose --root "${PREFIX}" --path .    # [not win]
     - cargo install --no-track --locked --verbose --root "%PREFIX%" --path .     # [win]
