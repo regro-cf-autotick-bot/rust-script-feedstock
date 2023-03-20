@@ -29,7 +29,7 @@ test:
     - rust-script --version | grep -qF '{{ version }}'    # [not win]
     - rust-script --version | findstr "/C:{{ version }}"  # [win]
     - rust-script --expr 'println!("Hello, World!");' | grep -qF 'Hello, World!'           # [not win]
-    - rust-script --expr "println!("""Hello, World!""");" | findstr /B "/C:Hello, World!"  # [win]
+    - rust-script --expr 'println!("Hello, World!");' | findstr /B "/C:Hello, World!"      # [win]
 
 about:
   home: https://rust-script.org
