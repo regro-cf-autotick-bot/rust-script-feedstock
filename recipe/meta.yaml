@@ -21,6 +21,7 @@ requirements:
     # rust-script links to C runtime libs => use compiler('c') to get them into run deps
     - {{ compiler('c') }}
   host:
+    - macports-legacy-support # [osx]
   run:
     - rust >=1.47
 
