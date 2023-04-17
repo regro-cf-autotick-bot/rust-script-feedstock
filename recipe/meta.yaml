@@ -20,10 +20,10 @@ requirements:
     - {{ compiler('rust') }}
     # rust-script links to C runtime libs => use compiler('c') to get them into run deps
     - {{ compiler('c') }}
-  host:
     # this seems to be needed for having the `renameat()` function available for `rustix`
     # on older osx / macOS systems
     - macports-legacy-support  # [osx]
+  host:
   run:
     - rust >=1.47
 
